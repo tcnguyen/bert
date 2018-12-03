@@ -434,7 +434,7 @@ class SSTProcessor(DataProcessor):
             else:
                 text_a = tokenization.convert_to_unicode(line[0])
                 label = tokenization.convert_to_unicode(line[1])
-                
+
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
         return examples
@@ -842,7 +842,7 @@ def main(_):
         "mrpc": MrpcProcessor,
         "xnli": XnliProcessor,
         "classification": ClassificationProcessor,
-        "sst:" SSTProcessor
+        "sst": SSTProcessor
     }
 
     if not FLAGS.do_train and not FLAGS.do_eval and not FLAGS.do_predict:
