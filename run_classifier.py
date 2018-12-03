@@ -397,10 +397,7 @@ class ClassificationProcessor(DataProcessor):
 
 class SSTProcessor(DataProcessor):
     """ Processor for standford sentiment treebank text classification."""
-
-    def __init__(self):
-        self.labels = labels
-
+    
     def get_train_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
@@ -418,7 +415,7 @@ class SSTProcessor(DataProcessor):
 
     def get_labels(self):
         """See base class."""
-        return ['0', '1']
+        return ["0", "1"]
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
@@ -427,10 +424,11 @@ class SSTProcessor(DataProcessor):
             # Only the test set has a header
             if i == 0:
                 continue
+
             guid = "%s-%s" % (set_type, i)
             if set_type == "test":
                 text_a = tokenization.convert_to_unicode(line[1])
-                label = '0'
+                label = "0"
             else:
                 text_a = tokenization.convert_to_unicode(line[0])
                 label = tokenization.convert_to_unicode(line[1])
