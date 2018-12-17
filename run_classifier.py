@@ -437,10 +437,10 @@ class SSTProcessor(DataProcessor):
                 InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
         return examples
     
-    class UbuntuProcessor(SSTProcessor):
-      def get_labels(self):
-        """See base class."""
-        return ["software_recommendation", "make_update", "shutdown_computer", "setup_printer", "none"]
+class UbuntuProcessor(SSTProcessor):
+  def get_labels(self):
+    """See base class."""
+    return ["software_recommendation", "make_update", "shutdown_computer", "setup_printer", "none"]
 
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
