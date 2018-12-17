@@ -436,6 +436,11 @@ class SSTProcessor(DataProcessor):
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
         return examples
+    
+    class UbuntuProcessor(SSTProcessor):
+      def get_labels(self):
+        """See base class."""
+        return ["software_recommendation", "make_update", "shutdown_computer", "setup_printer", "none"]
 
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
@@ -840,7 +845,8 @@ def main(_):
         "mrpc": MrpcProcessor,
         "xnli": XnliProcessor,
         "classification": ClassificationProcessor,
-        "sst": SSTProcessor
+        "sst": SSTProcessor,
+        "ubuntu": UbuntuProcessor
     }
 
     if not FLAGS.do_train and not FLAGS.do_eval and not FLAGS.do_predict:
