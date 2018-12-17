@@ -442,6 +442,10 @@ class UbuntuProcessor(SSTProcessor):
     """See base class."""
     return ["software_recommendation", "make_update", "shutdown_computer", "setup_printer", "none"]
 
+class WebAppProcessor(SSTProcessor):
+  def get_labels(self):
+    """See base class."""
+    return ["find_alternative", "filter_spam", "delete_account", "change_password", "sync_accounts", "none", "export_data", "download_video"]
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
                            tokenizer):
@@ -846,7 +850,8 @@ def main(_):
         "xnli": XnliProcessor,
         "classification": ClassificationProcessor,
         "sst": SSTProcessor,
-        "ubuntu": UbuntuProcessor
+        "ubuntu": UbuntuProcessor,
+        "webapp": WebAppProcessor
     }
 
     if not FLAGS.do_train and not FLAGS.do_eval and not FLAGS.do_predict:
