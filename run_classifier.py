@@ -447,6 +447,11 @@ class WebAppProcessor(SSTProcessor):
     """See base class."""
     return ["find_alternative", "filter_spam", "delete_account", "change_password", "sync_accounts", "none", "export_data", "download_video"]
 
+class MovieReviewProcessor(SSTProcessor):
+  def get_labels(self):
+    """See base class."""
+    return ["0", "1", "2", "3", "4"]
+
 def convert_single_example(ex_index, example, label_list, max_seq_length,
                            tokenizer):
     """Converts a single `InputExample` into a single `InputFeatures`."""
@@ -851,7 +856,8 @@ def main(_):
         "classification": ClassificationProcessor,
         "sst": SSTProcessor,
         "ubuntu": UbuntuProcessor,
-        "webapp": WebAppProcessor
+        "webapp": WebAppProcessor,
+        "moviereview": MovieReviewProcessor
     }
 
     if not FLAGS.do_train and not FLAGS.do_eval and not FLAGS.do_predict:
